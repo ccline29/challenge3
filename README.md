@@ -1,5 +1,5 @@
 # Password Generator Starter Code
-Cloned Starter Code to refract code to install password generator
+Cloned a Starter Code to install a Random password generator between 8 and 128 characters, including Uppercase,Lowercase,Numbers and Symbols.
 # resources 
 Resources used https://www.youtube.com/watch?v=duNmhKgtcsI
 # Mock-up
