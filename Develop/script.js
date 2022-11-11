@@ -14,7 +14,7 @@ const randomFunc = {
 	number: getRandomNumber,
 	symbol: getRandomSymbol
 }
-// Copy password to clipboard
+
 clipboard.addEventListener('click', () => {
 	const textarea = document.createElement('textarea');
 	const password = resultEl.innerText;
