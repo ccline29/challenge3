@@ -1,81 +1,48 @@
-// Assignment code here
-const resultEl = document.getElementById('result');
-const lengthEl = document.getElementById('length');
-const uppercaseEl = document.getElementById('uppercase');
-const lowercaseEl = document.getElementById('lowercase');
-const numbersEl = document.getElementById('numbers');
-const symbolsEl = document.getElementById('symbols');
-const generateEl = document.getElementById('generate');
-const clipboard = document.getElementById('clipboard');
+// variables
+const results = document.querySelector("#result");
+const UNInum = [48, 57];
+const UNIupper = [65, 90];
+const UNIlower = [97, 122];
+const UNIsym = [33, 47];
 
-const randomFunc = {
-	lower: getRandomLower,
-	upper: getRandomUpper,
-	number: getRandomNumber,
-	symbol: getRandomSymbol
-}
 
-clipboard.addEventListener('click', () => {
-	const textarea = document.createElement('textarea');
-	const password = resultEl.innerText;
-	
-	if(!password) { return; }
-	
-	textarea.value = password;
-	document.body.appendChild(textarea);
-	textarea.select();
-	document.execCommand('copy');
-	textarea.remove();
-	alert('Password copied to clipboard');
-});
-/* Generate Event Listen */
-generate.addEventListener('click', () => {
-	const length = +lengthEl.value;
-	const hasLower = lowercaseEl.checked;
-	const hasUpper = uppercaseEl.checked;
-	const hasNumber = numbersEl.checked;
-	const hasSymbol = symbolsEl.checked;
-	
-	resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
-});
 
-function generatePassword(lower, upper, number, symbol, length) {
-	let generatedPassword = '';
-	const typesCount = lower + upper + number + symbol;
-	const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
-	
-	// Doesn't have a selected type
-	if(typesCount === 0) {
-		return '';
-	}
-	
-	// create a loop
-	for(let i=0; i<length; i+=typesCount) {
-		typesArr.forEach(type => {
-			const funcName = Object.keys(type)[0];
-			generatedPassword += randomFunc[funcName]();
-		});
-	}
-	
-	const finalPassword = generatedPassword.slice(0, length);
-	
-	return finalPassword;
-}
+document.querySelector("#generate").addEventListener('click', () => {
+    const length = document.querySelector("#length").value;
+    const uppercase = document.querySelector("#uppercase").checked;
+    const lowercase = document.querySelector("#lowercase").checked;
+    const numbers = document.querySelector("#numbers").checked;
+    const symbols = document.querySelector("#symbols").checked;
 
-function getRandomLower() {
-	return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-}
+    const randSelector = [];
+    const password = [];
+    
+    if (uppercase === true) {
+        for (let i = UNIupper[0]; i <= UNIupper[1]; i++) {
+            randSelector.push(i);
+        }
 
-function getRandomUpper() {
-	return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
+    }
+    if (numbers === true) {
+        for (let i = UNInum[0]; i <= UNInum[1]; i++) {
+            randSelector.push(i);
+        }
+        
 
-function getRandomNumber() {
-	return +String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-}
+    }
+    if (symbols === true) {
+        for (let i = UNIsym[0]; i <= UNIsym[1]; i++) {
+            randSelector.push(i);
+        }
+    }
+    if (lowercase === true) {
+        for (let i = UNIlower[0]; i <= UNIlower[1]; i++) {
+            randSelector.push(i);
+        }
+    }
 
-function getRandomSymbol() {
-	const symbols = '!@#$%^&*(){}[]=<>/,.'
-	return symbols[Math.floor(Math.random() * symbols.length)];
-}
-
+    for (let i = 0; i < length; i++) {
+        password.push(String.fromCharCode(randSelector[Math.floor(Math.random() * randSelector.length)]))
+    }
+    results.textContent = password.join("");
+})

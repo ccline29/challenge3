@@ -1,92 +1,85 @@
-
 * {
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'sans-serif';
 }
 
 body {
-	background-color: #07fc3c;
-	color: #fff;
-	display: flex;
-	font-family: 'Muli', sans-serif;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 10px;
-	min-height: 100vh;
+    height: 100vh;
+    background-color: lightblue;
+    position: relative;
 }
 
-p {
-	margin: 5px 0;
+    .main{
+    	position: absolute;
+    	top: 20px;
+    	left: 40%;
+    	padding: 10px 30px;
+    	border-radius: 50px;
+
+
+    }
+
+
+.settings {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-h2 {
-	margin: 10px 0 20px;
-	text-align: center;
-}
-
-input[type=checkbox] {
-	margin-right: 0;
-}
-
-.container {
-	background-color: #0505f4;
-	box-shadow: 0px 2px 10px rgba(221, 8, 8, 0.2);
-	padding: 20px;
-	width: 350px;
-	max-width: 100%;
-}
-
-.result-container {
-	background-color: rgba(6, 247, 199, 0.507);
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	position: relative;
-	font-size: 18px;
-	letter-spacing: 1px;
-	padding: 12px 10px;
-	height: 50px;
-	width: 100%;
-}
-
-.result-container #result {
-  	word-wrap: break-word;
-	max-width: calc(100% - 40px);
-}
-
-.result-container .btn {
-	font-size: 20px;
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	height: 40px;
-	width: 40px;
-}
 
 .btn {
-	border: none;
-	color: rgb(252, 247, 247);
-	cursor: pointer;
-	font-size: 16px;
-	padding: 8px 12px;
-	background-color: #262699;
+    position: absolute;
+    padding: 20px 30px;
+    border: 0;
+    font-family: 'sans-serif';
+    font-size: 1.1em;
+    border-radius: 10px;
+    background: white;
+    
+    left: 45%;
+    top: 88%;
 }
 
-.btn-large {
-	display: block;
-	width: 100%;
+
+.container {
+    height: 400px;
+    width: 500px;
+    position: absolute;
+    left: 35%;
+    top: 18%;
+    border-radius: 50px;
+    
+
 }
 
-.setting {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 15px 0;
+
+input[type=checkbox] {
+    position: absolute;
+    left: 80%;
 }
 
-@media screen and (max-width: 400px) {
-	.result-container {
-		font-size: 14px;
-	}
+
+.result-container {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    font-size: 18px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    padding: 15px 10px;
+    height: 40px;
+    margin-top: 5%;
+    left: 7%;
+    width: 80%;
 }
 
+
+.result-container #result {
+    word-wrap: break-word;
+    max-width: calc(100% - 40px);
+}
